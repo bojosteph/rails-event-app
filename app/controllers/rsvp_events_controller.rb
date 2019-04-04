@@ -1,0 +1,2 @@
+class RsvpEventsController < ApplicationController
+end
