@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+    before_action :confirm_logged_in
+
     def index
         @events = Event.all
     end
@@ -46,6 +48,8 @@ class EventsController < ApplicationController
     def event_params(*args)
         params.require(:event).permit(*args)
     end
+
+    
 
 end
 
