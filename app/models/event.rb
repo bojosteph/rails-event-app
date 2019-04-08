@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   validates_presence_of :name, :date, :location, :description
-  belongs_to :user, optional: true
+  belongs_to :user
   has_many :rsvp_events
 
   

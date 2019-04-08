@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   
+  #get    '/login',   to: 'sessions#new'
+  #post   '/login',   to: 'sessions#create'
+ # delete '/logout',  to: 'sessions#destroy'
+
   root :to => 'public#index'
-  get 'access/login'
-  post 'access/attempt_login'
-  get 'access/logout'
+  get 'sessions/new'
+  post 'sessions/create'
+  get 'sessions/destroy'
 
   resources :rsvp_events
   resources :events
