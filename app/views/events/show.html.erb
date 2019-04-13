@@ -5,9 +5,13 @@
     </h2>
     <br />
 
-    <h4>Date:
-        <%= @event.date %>
+    <h4>
+        <%= start_of_event @event %>
     </h4>
+    <h4>
+        <%= end_of_event @event %>
+    </h4>
+
     <h4>Location:
         <%= @event.location %>
     </h4>

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-
+    before_action :confirm_logged_in
 
 
     def index
@@ -17,7 +17,7 @@ class EventsController < ApplicationController
 
     def create 
         @user = current_user
-        @event = @user.events.create(event_params(:name, :date, :location, :description))
+        @event = @user.events.create(event_params(:name, :location, :description, :start_of_event, :end_of_event))
 
         if @event.save 
             redirect_to event_path(@event)
@@ -32,7 +32,7 @@ class EventsController < ApplicationController
 
     def update 
         @event = Event.find(params[:id])
-        if @event.update(event_params(:name, :date, :location, :description))
+        if @event.update(event_params(:name, :date, :location, :description, :start_of_event, :end_of_event))
             redirect_to event_path(@event)
         else
             render :edit 

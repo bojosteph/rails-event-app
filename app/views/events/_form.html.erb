@@ -6,8 +6,12 @@
     <%= f.text_field :name %>
 </div>
 <div class="form-group">
-    <%= f.label :date %>
-    <%= f.date_field :date %>
+    <%= f.label :start_of_event %>
+    <%= f.datetime_field :start_of_event %>
+</div>
+<div class="form-group">
+    <%= f.label :end_of_event %>
+    <%= f.datetime_field :end_of_event %>
 </div>
 <div class="form-group">
     <%= f.label :location %>
