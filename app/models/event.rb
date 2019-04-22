@@ -3,5 +3,13 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :rsvp_events
 
+  def self.active_event
+      where("end_of_event > ?", DateTime.now)
+  end
+
+  def self.past_event
+      where("end_of_event < ?", DateTime.now)
+  end
+
   
 end

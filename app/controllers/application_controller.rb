@@ -12,14 +12,23 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def logged_in?
+    !!current_user
+  end
 
 
+
+  
+
+  
   private 
+
   def confirm_logged_in
-    unless session[:user_id]
+    unless logged_in?
       flash[:notice] = "Please log in."
       redirect_to(sessions_new_path)
       # redirect_to prevents requested action from running
     end
   end
+  
 end

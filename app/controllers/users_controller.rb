@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-   
+   before_action :confirm_logged_in, :except => [:new, :create]
 
     def index 
         @user = User.all
@@ -10,10 +10,11 @@ class UsersController < ApplicationController
     end
 
     def create 
-        @user = User.new(user_params(:username, :email, :password, :full_name))
-        if @user.save
+        user = User.new(user_params(:username, :email, :password, :full_name))
+        if user.save
+            session[:user_id] = user.id
             flash[:notice] = "User created successfully."
-            redirect_to user_path(@user)
+            redirect_to events_path
         else
             render :new
         end
