@@ -19,7 +19,7 @@ class EventsController < ApplicationController
         @user = current_user
         @event = @user.events.create(event_params(:name, :location, :description, :start_of_event, :end_of_event))
 
-        if @event.save 
+        if @event.save
             redirect_to event_path(@event)
         else 
             render :new 

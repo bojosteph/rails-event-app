@@ -4,15 +4,15 @@ class Event < ApplicationRecord
   has_many :rsvp_events
   validate :date_must_be_current, if: :has_date_range?
   validate :correct_date_range, if: :has_date_range?
-
   validate :no_reservation_overlap
 
 
-def no_reservation_overlap
-  if (Event.where("(? BETWEEN start_of_event AND end_of_event OR ? BETWEEN start_of_event AND end_of_event) AND user_id = ?", self.start_of_event, self.end_of_event, self.user_id).any?)
-     errors.add(:end_of_event, 'it overlaps another reservation')
+  def no_reservation_overlap
+    if (Event.where("((? BETWEEN start_of_event AND end_of_event OR ? BETWEEN start_of_event AND end_of_event) AND user_id = ?) AND id != ? ", self.start_of_event, self.end_of_event, self.user_id, self.id).any?)
+      errors.add(:base, 'it overlaps another Event please check your dates')
+    end
   end
-end
+  
   
 
   def self.active_event
@@ -39,5 +39,9 @@ end
     end
   end
 
+  def overlaps?(event)
+    start_of_event_ <= event.end_of_event && event.start_of_event <= end_date
+  end
+  
   
 end
