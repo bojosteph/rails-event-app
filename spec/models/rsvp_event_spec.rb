@@ -7,4 +7,14 @@ describe RsvpEvent do
     rsvp_event = user.rsvp_events.create(event: event)
     expect(rsvp_event).to be_valid
   end
+
+
+  describe " User Associations" do 
+    it { should belong_to(:user) }
+  end
+  
+  describe "Event Associations" do
+    it { should belong_to(:event)}
+  end
+    
 end
