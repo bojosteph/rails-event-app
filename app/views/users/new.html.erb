@@ -1,9 +1,10 @@
-<% @page_title = "New User" %>
+<div class="container">
+    <h1 style="padding-top: 10px; padding-bottom: 10px;">Create Account</h1>
 
-<%= link_to("<< Back to List", events_path, :class => 'back-link') %>
+
 
 <div class="users new">
-    <h2>Create User</h2>
+    <h2>Sign Up</h2>
 
     <%= form_for(@user) do |f| %>
 
@@ -14,4 +15,5 @@
     </div>
 
     <% end %>
+</div>
 </div>

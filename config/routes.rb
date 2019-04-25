@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
   post 'sessions/create'
   get 'sessions/destroy'
+  post '/rsvp_events/create' => 'rsvp_events#create'
 
   resources :rsvp_events
   resources :events

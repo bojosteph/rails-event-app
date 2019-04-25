@@ -1,0 +1,23 @@
+<div class="container">
+                            
+
+  <h2 class="display-4" align="center" style="padding-top: 10Ppx; color:black;  padding-bottom: 10px;">Participants for
+    <%= @rsvp_events.first.event.name %>
+  </h2>
+
+  <div style="font-size:150%" class="row">
+
+    <% @rsvp_events.each do |rsvp| %>
+
+    <ul>
+      <li>
+        <%= rsvp.user.full_name %>
+      </li>
+      <li> email :
+        <%= rsvp.user.email %>
+      </li>
+    </ul>
+
+    <% end %>
+
+  </div>

@@ -23,3 +23,8 @@
             <%= @event.description %>
         </h5>
     </p>
+  
+
+     
+            <div class="rsvp"><%= button_to "Rsvp now", rsvp_events_create_path(event_id: @event.id), class: "btn btn-primary" %></div>
+         

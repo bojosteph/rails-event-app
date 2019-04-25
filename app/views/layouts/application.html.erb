@@ -13,7 +13,7 @@
   <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cerulean/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-C++cugH8+Uf86JbNOnQoBweHHAe/wVKN/mb0lTybu/NZ9sEYbd+BbbYtNpWYAsNP" crossorigin="anonymous">
   <title>RailsEventApp</title>
-  
+ 
 </head>
 
 <body>
@@ -26,7 +26,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        
+        <% if logged_in? %>
         <li class="nav-item active">
           <a class="nav-link" href="/events">Upcoming Events</a>
         </li>
@@ -48,8 +48,8 @@
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="/events">Upcoming Events</a>
               <a class="dropdown-item" href="/events/new">Create Events</a>
-              
-              
+              <% @user = current_user %>
+              <a class="dropdown-item" href="/users/<%= @user.id %>">Your Events</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/rsvp_events">Events You Rsvp</a>
               <a class="dropdown-item" href="/sessions/destroy">Log Out</a>
@@ -57,14 +57,15 @@
           </div>
         </li>
 
-       
+        <% end %>
+        <% if !logged_in? %>
         <li class="nav-item">
           <a class="nav-link" href="/sessions/new">Log In</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/users/new">Sign Up</a>
         </li>
-       
+        <% end %>
       </ul>
     </div>
 
@@ -77,7 +78,7 @@
 
 
   <nav class="navbar fixed-bottom navbar-light bg-light">
-    <a class="navbar-brand" href="#">&copy; 2019<strong> RailsEventApp</strong></a>
+    <a class="navbar-brand" href="#">&copy; 2019<logo> RailsEventApp</logo></a>
   </nav>
 
   <!-- Optional JavaScript -->
