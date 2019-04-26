@@ -2,7 +2,7 @@
                             
 
   <h2 class="display-4" align="center" style="padding-top: 10Ppx; color:black;  padding-bottom: 10px;">Participants for
-    <%= @rsvp_events.first.event.name %>
+    <%= @rsvp_events.first.attending_event.name %>
   </h2>
 
   <div style="font-size:150%" class="row">
@@ -11,10 +11,10 @@
 
     <ul>
       <li>
-        <%= rsvp.user.full_name %>
+        <%= rsvp.participant.full_name %>
       </li>
       <li> email :
-        <%= rsvp.user.email %>
+        <%= rsvp.participant.email %>
       </li>
     </ul>
 

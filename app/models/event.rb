@@ -1,7 +1,9 @@
 class Event < ApplicationRecord
   validates_presence_of :name, :location, :description, :start_of_event, :end_of_event
   belongs_to :user
-  has_many :rsvp_events
+  has_many :rsvp_events, foreign_key: :attending_event_id
+  has_many :participants, through: :rsvp_events, source: :user 
+
   validate :date_must_be_current, if: :has_date_range?
   validate :correct_date_range, if: :has_date_range?
   validate :no_overlapping_events

@@ -70,7 +70,13 @@
     </div>
 
   </nav>
-
+  <div id="flash"></div>
+    <%- flash.keys.each do |kind| %>
+    <div class=<%= kind %>>
+      <%= flash[kind] %>
+    </div>
+    <%- end %>
+  </div>
 
 
   

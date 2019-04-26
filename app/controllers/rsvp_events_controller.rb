@@ -12,10 +12,13 @@ class RsvpEventsController < ApplicationController
         #raise params.inspect
         #user = current_user
         #event = Event.find(params[:id])
-         @rsvp_event = current_user.rsvp_events.build({event_id: params[:event_id]})
+         @rsvp_event = current_user.rsvp_events.build({attending_event_id: params[:event_id]})
 
         if @rsvp_event.save
             redirect_to rsvp_events_path
+        else
+        flash[:error] = "You Already Joined This Event."
+            redirect_to events_path
         end
     end
 
